@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  php:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: docker-online2
+    restart: always
+    ports:
+      - 8060:80
+    volumes:
+      - ./ejercicios:/var/www/html
+volumes:
+  ejercicios: {}

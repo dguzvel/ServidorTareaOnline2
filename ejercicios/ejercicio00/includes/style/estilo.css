@@ -1,0 +1,43 @@
+.encabezado{
+
+    font-family: 'Irish Grover', cursive;
+    color:white;
+    text-align: center;
+    background-color: black;
+    padding: 10px; 
+
+}
+
+.cuerpo{
+
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-width: 100%;
+
+}
+
+#titulo{
+
+    font-family: 'Irish Grover', cursive;
+    color:goldenrod;
+    font-weight: bolder;
+    text-decoration-line: underline;
+
+}
+
+.pie{
+
+    font-family: 'Irish Grover', cursive;
+    color:white;
+    text-align: center;
+    background-color: black;
+    padding: 5px; 
+
+}
+
+.alert{
+
+    margin-top: 5px;
+
+}
