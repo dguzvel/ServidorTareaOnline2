@@ -30,11 +30,13 @@
 
     }catch (PDOException $e){
 
-        die(
+        /* die(
             '<div class="alert alert-danger text-center">
                 No se ha podido conectar a la Base de Datos :( <br>'.$e->getMessage().'
             </div>'
-        );
+        ); */
+
+        echo '<div class="alert alert-danger text-center"> No se ha podido conectar a la Base de Datos :( <br>'.$e->getMessage().'</div>';
 
     }finally{
 
