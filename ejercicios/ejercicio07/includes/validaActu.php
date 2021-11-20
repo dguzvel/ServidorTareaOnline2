@@ -63,6 +63,38 @@
 
         }
 
+        if(isset($_FILES["imagen"]) || !empty($_FILES["imagen"]["tmp_name"])){
+
+            if(!is_dir("fotos")){
+
+                $directorio = mkdir("fotos", 0777, true);
+
+            }else{
+
+                $directorio = true;
+                
+                }
+
+
+            if($directorio){
+
+                $nombreImagen = time()."-".$_FILES["imagen"]["name"];
+
+                $mueveImagen = move_uploaded_file($_FILES["imagen"]["tmp_name"],"fotos/".$nombreImagen);
+
+                $imagen = $nombreImagen;
+
+                if($mueveImagen){
+                    $imagenCargada = true;
+                }else{
+                    $imagenCargada = false;
+                    $errores["imagen"]="Error: La imagen no se cargó correctamente :(";
+                }
+                
+            }
+
+        }
+
     }
 
 ?>

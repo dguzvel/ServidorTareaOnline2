@@ -82,7 +82,7 @@
 
         }
         
-        if(isset($_FILES["imagen"]) && !empty($_FILES["imagen"]["tmp_name"])){
+        if(isset($_FILES["imagen"]) || !empty($_FILES["imagen"]["tmp_name"])){
 
             if(!is_dir("fotos")){
 
