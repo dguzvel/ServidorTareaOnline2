@@ -2,8 +2,8 @@
   <tr>
       <th>NOMBRE</th>
       <th>E-MAIL</th>
-      <th>OPERACIONES</th>
       <th>IMAGEN</th>
+      <th>OPERACIONES</th>
   </tr>
 
   <?php while($row = $query->fetch()){ { ?> 
