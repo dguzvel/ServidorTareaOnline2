@@ -30,7 +30,13 @@
                 
                 if(!$articulos){
 
-                    header("Location: index.php");
+                    /* echo '<div class="alert alert-warning text-center">No hay ningún usuario registrado, añado uno</div>';
+                    header("Location: añadir.php"); */
+
+                    echo "<script>
+                            alert('No hay ningún usuario registrado, añada al menos uno para continuar');
+                            window.location= 'añadir.php'
+                          </script>";
 
                 }
 
