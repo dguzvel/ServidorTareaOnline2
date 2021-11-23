@@ -1,4 +1,5 @@
 <table class="table table-dark table-striped table-hover">
+<!-- Tabla que muestra una serie de filas y que estará paginada -->
 <tr>
     <th>NOMBRE</th>
     <th>E-MAIL</th>
@@ -6,6 +7,7 @@
     <th>OPERACIONES</th>
 </tr>
 
+<!-- Con un foreach recorremos todo el array que contiene las filas de la base de datos y las vamos insertando en la tabla -->
 <?php foreach($articulos as $articulo){ ?> 
 
     <tr>
@@ -24,9 +26,10 @@
 
 </table>
 
+<!-- Navegación de la página -->
 <nav aria-label="Page navigation">
 <ul class="pagination">
-
+    <!-- Si la pagina es la 1 se desactiva el botón de página anterior, en caso contrario permite retroceder una página -->
     <?php if($pagina == 1){ ?>
 
       <li class="page-item disabled">
@@ -46,7 +49,7 @@
     <?php } ?>
 
     <?php
-    
+      //Comenzando en 1 y hasta el número de paginas se añadirán botones numéricos, activo si coincide con la página en la que estamos
       for($i = 1; $i <= $numeroPagina; $i++){
 
         if($pagina == $i){
@@ -67,6 +70,7 @@
 
     ?>
     
+    <!-- Si la pagina es la última se desactiva el botón de página siguiente, en caso contrario permite avanzar una página -->
     <?php if($pagina == $numeroPagina){ ?>
 
     <li class="page-item disabled">

@@ -6,9 +6,10 @@
         <h3 id="titulo">Editar Usuario</h3>
         <?php 
 
+            //Si mediante $_GET obtenemos un valor numérico  para usuario_id, se cumplirá la condición
             if(isset($_GET["usuario_id"])&&(is_numeric($_GET["usuario_id"]))){
 
-                $usuario_id = $_GET["usuario_id"];
+                $usuario_id = $_GET["usuario_id"];//Damos el valor del $_GET a la variable $usuario_id
 
                 try{
 
@@ -16,7 +17,7 @@
                     $base = new PDO('mysql:host=localhost; dbname=bdusuarios','root','');
                     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     
-                    //Consultar datos de una base de datos
+                    //Consultar datos de una base de datos, en concreto del usuario cuya id obtenemos desde el $_GET
                     $sql = "SELECT * FROM usuarios WHERE usuario_id = :usuario_id;";
                     $query = $base->prepare($sql);
                     $query->setFetchMode(PDO::FETCH_ASSOC); //Devuelve un array de datos por asociación con el nombre de cada columna
@@ -25,6 +26,7 @@
                     { ?>
 
                         <table class="table table-dark table-striped table-hover">
+                        <!-- Tabla que muestra los valores que pueden ser modificados -->
                         <tr>
                             <th>NOMBRE</th>
                             <th>E-MAIL</th>
@@ -55,14 +57,16 @@
     
                 }finally{
     
-                    $base = null;
+                    $base = null;//Cerramos la conexión a la base de datos
     
                 }  
 
             }
 
+            //Cuando se pulse el botón submit, si no hay errores, se cumplirá la condición
             if(isset($_POST["submit"]) && count($errores) == 0){
 
+                //Variables que adquirirán sus valores de los nuevos introducidos en el formulario
                 $usuario_id = $_POST["usuario_id"];
                 $nombre = $_POST["nombre"];
                 $apellidos = $_POST["apellidos"];
@@ -81,9 +85,9 @@
                     $query->setFetchMode(PDO::FETCH_ASSOC);
                     $query->execute(['usuario_id' => $usuario_id]);
                     $row = $query->fetch();
-                    unlink("fotos/".$row["imagen"]);
+                    unlink("fotos/".$row["imagen"]);//Eliminamos con unlink la imagen, mediante su name, en la ruta establecida
 
-                    //Insertar valores en una tabla de la Base de Datos
+                    //Actualización de valores en la Base de Datos
                     $sql = "UPDATE Usuarios SET nombre = :nombre, apellidos = :apellidos, email = :email, imagen = :imagen
                             WHERE usuario_id = :usuario_id;";
                     $query = $base->prepare($sql);
@@ -97,7 +101,7 @@
 
                             ]);
 
-                    $fechaHora = date('Y-m-d H:i:s');
+                    $fechaHora = date('Y-m-d H:i:s');//Valores date para insertar en la tabla logs la fecha y hora
 
                     //Insertar valores en logs
                     $sql = "INSERT INTO logs VALUES(
@@ -134,7 +138,7 @@
 
                 }finally{
 
-                    $base = null;
+                    $base = null;//Cerramos la conexión a la base de datos
 
                 }
 
@@ -190,7 +194,8 @@
                 <?php echo mostrarError($errores, "imagen"); ?>
             </label>
             <br><br>
-
+            
+            <!-- Este campo del formulario es invisible para que no pueda ser modificado -->
             <input type="hidden" name="usuario_id" class="form-control" value="<?php echo $usuario_id; ?>" />
             
             <input type="submit" value="Actualizar" name="submit" class="btn btn-success" />

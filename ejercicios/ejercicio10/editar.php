@@ -2,6 +2,8 @@
 <html lang="es">
     <head>
 
+        <!-- Se incluyen todos los archivos php que darán forma a la página de edición/actualización de usuarios -->
+
         <?php require 'includes/head.php'; ?>
 
     </head>

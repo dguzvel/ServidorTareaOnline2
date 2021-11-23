@@ -6,6 +6,7 @@
         <h3 id="titulo">Listado de usuarios almacenados en la base de datos</h3>
         <?php
 
+            //Si mediante $_GET obtenemos un valor numérico  para usuario_id, se cumplirá la condición
             if(isset($_GET["usuario_id"])&&(is_numeric($_GET["usuario_id"]))){
 
                 $usuario_id = $_GET["usuario_id"];
@@ -16,7 +17,7 @@
                     $base = new PDO('mysql:host=localhost; dbname=bdusuarios','root','');
                     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     
-                    //Consultar datos de una base de datos
+                    //Consultar datos de una base de datos, en concreto del usuario cuya id obtenemos desde el $_GET
                     $sql = "SELECT * FROM Usuarios WHERE usuario_id = :usuario_id;";
                     $query = $base->prepare($sql);
                     $query->setFetchMode(PDO::FETCH_ASSOC); //Devuelve un array de datos por asociación con el nombre de cada columna
@@ -26,7 +27,7 @@
                         echo '<div class="alert alert-success text-center">Aquí tiene información más detallada del usuario :)</div>';
                         include 'includes/tablaCompleta.php';
 
-                        $fechaHora = date('Y-m-d H:i:s');
+                        $fechaHora = date('Y-m-d H:i:s');//Valores date para insertar en la tabla logs la fecha y hora
     
                         //Insertar valores en logs
                         $sql = "INSERT INTO logs VALUES(
@@ -55,7 +56,7 @@
 
                 }finally{
 
-                    $base = null;
+                    $base = null;//Cerramos la conexión a la base de datos
 
                 }
             

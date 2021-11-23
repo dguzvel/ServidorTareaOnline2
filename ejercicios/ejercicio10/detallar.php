@@ -2,6 +2,8 @@
 <html lang="es">
     <head>
 
+        <!-- Se incluyen todos los archivos php que darán forma a la página que muestra la tabla detallada de un usuario -->
+
         <?php require 'includes/head.php'; ?>
 
     </head>

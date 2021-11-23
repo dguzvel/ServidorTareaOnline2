@@ -5,7 +5,7 @@
         //Nos conectamos a la Base de Datos
         $base = new PDO('mysql:host=localhost; dbname=bdusuarios','root','');
         
-        //Creamos una Tabla para los logs
+        //Creamos una Tabla para los logs y tenemos en cuenta que el valor máximo de los campos datetime es 6
         $sql = "CREATE TABLE IF NOT EXISTS logs(
 
                     id int(255) auto_increment not null,
@@ -30,7 +30,7 @@
 
     }finally{
 
-        $base = null;
+        $base = null;//Cerramos la conexión a la base de datos
 
     }
 

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tabla PDF</title>
+    <!-- Para que el pdf tenga estilo, tendrá que contar con un estilo interno. Da problemas con CSS externo -->
     <style type="text/css">
 
       .encabezado{
@@ -102,6 +103,7 @@
           }  
 
         ?>
+        <!-- Creamos una tabla que contendrá todas las filas extraídas de la base de datos e insertadas en el listado de usuarios -->
         <table>
           <tr>
               <th>NOMBRE</th>

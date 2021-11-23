@@ -6,8 +6,10 @@
         <h3 id="titulo">Añadir Usuario</h3>
         <?php 
 
+            //Cuando se pulse el botón submit, si no hay errores, se cumplirá la condición
             if(isset($_POST["submit"]) && count($errores) == 0){
 
+                //Variables que adquirirán sus valores globales (los mismos que tendrán en validar.php que filtra el formulario)
                 global $nombre;
                 global $apellidos;
                 global $bio;
@@ -45,7 +47,7 @@
 
                             ]);
                     
-                    $fechaHora = date('Y-m-d H:i:s');
+                    $fechaHora = date('Y-m-d H:i:s');//Valores date para insertar en la tabla logs la fecha y hora
 
                     //Insertar valores en logs
                     $sql = "INSERT INTO logs VALUES(
@@ -78,7 +80,7 @@
 
                 }finally{
 
-                    $base = null;
+                    $base = null;//Cerramos la conexión a la base de datos
 
                 }
 

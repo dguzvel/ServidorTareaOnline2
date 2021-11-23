@@ -8,7 +8,7 @@
 
             if(isset($_GET["usuario_id"])&&(is_numeric($_GET["usuario_id"]))){
 
-                $usuario_id = $_GET["usuario_id"];
+                $usuario_id = $_GET["usuario_id"];//Damos el valor del $_GET a la variable $usuario_id
 
                 try{
 
@@ -22,13 +22,13 @@
                     $query->setFetchMode(PDO::FETCH_ASSOC);
                     $query->execute(['usuario_id' => $usuario_id]);
                     $row = $query->fetch();
-                    unlink("fotos/".$row["imagen"]);
+                    unlink("fotos/".$row["imagen"]);//Eliminamos con unlink la imagen, mediante su name, en la ruta establecida
                     //Se elimina al usuario
                     $sql = "DELETE FROM Usuarios WHERE usuario_id = :usuario_id;";
                     $query = $base->prepare($sql);
                     $query->execute(['usuario_id' => $usuario_id]);
                     
-                    $fechaHora = date('Y-m-d H:i:s');
+                    $fechaHora = date('Y-m-d H:i:s');//Valores date para insertar en la tabla logs la fecha y hora
 
                     //Insertar valores en logs
                     $sql = "INSERT INTO logs VALUES(
@@ -61,7 +61,7 @@
     
                 }finally{
     
-                    $base = null;
+                    $base = null;//Cerramos la conexión a la base de datos
     
                 }  
 
